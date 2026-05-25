@@ -1,0 +1,117 @@
+# ============================================================
+#  .gitignore — Spring Boot + React/Vite (monorepo)
+# ============================================================
+
+# ------------------------------------------------------------
+# BACKEND — Spring Boot / Maven
+# ------------------------------------------------------------
+
+# Compiled output
+backend/target/
+
+# Maven wrapper (optionnel, à garder si ton équipe n'a pas Maven installé)
+# !backend/.mvn/wrapper/maven-wrapper.jar
+
+# Fichiers de config locaux Spring Boot
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-local.yml
+backend/src/main/resources/application-dev.properties
+backend/src/main/resources/application-dev.yml
+backend/src/main/resources/application.yml
+
+# Logs
+*.log
+logs/
+
+# ------------------------------------------------------------
+# FRONTEND — React / Vite / Node
+# ------------------------------------------------------------
+
+# Dépendances
+frontend/node_modules/
+
+# Build de production
+frontend/dist/
+
+# Cache Vite
+frontend/.vite/
+
+# Variables d'environnement locales
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# ------------------------------------------------------------
+# BASE DE DONNÉES & SECRETS
+# ------------------------------------------------------------
+
+# Ne jamais committer les credentials
+*.env
+.env
+.env.*
+!.env.example
+
+# Dumps et exports SQL
+*.sql.bak
+*.dump
+
+# ------------------------------------------------------------
+# ÉDITEURS & IDEs
+# ------------------------------------------------------------
+
+# IntelliJ IDEA / Spring Tool Suite
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/
+nbbuild/
+nbdist/
+
+# ------------------------------------------------------------
+# SYSTÈME D'EXPLOITATION
+# ------------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ------------------------------------------------------------
+# DIVERS
+# ------------------------------------------------------------
+
+# Fichiers de test de couverture
+*.lcov
+coverage/
+
+# Rapports
+*.xml.bak
+*.json.bak
