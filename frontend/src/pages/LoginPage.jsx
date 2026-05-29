@@ -35,11 +35,23 @@ function LoginPage() {
             // setSuccessMessage('Connexion réussie !');
             console.log('Données reçues de ton API :', data);
 
+            const token = data.data;
+
+            if (token) {
+                // On enregistre le token dans le localStorage sous la clé "atoymg_token"
+                localStorage.setItem('atoymg_token', token);
+
+                // C'est ici qu'on pourra déclencher la redirection vers le tableau de bord
+                console.log('Le token a bien été stocké localement !');
+            } else {
+                console.log("Le serveur n'a pas renvoyé de jeton de connexion.");
+            }
+
             // C'est ici qu'on récupérera ton Token (ex: data.token) pour le stocker
 
         } catch (error) {
-            console.log('Données reçues de ton API :', error);
-        } 
+            console.log('Erreur :', error.message);
+        }
     };
 
     // 3. Structure de la page (JSX)
