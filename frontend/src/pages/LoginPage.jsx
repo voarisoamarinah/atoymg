@@ -6,15 +6,40 @@ function LoginPage() {
     const [password, setPassword] = useState('');
 
     // 2. Fonction qui gère la soumission du formulaire
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Empêche le rechargement de la page
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-        // Pour l'instant, on affiche juste les données dans la console
-        console.log('Tentative de connexion avec :');
-        console.log('Username:', username);
-        console.log('Mot de passe:', password);
+        try {
+            // 1. Envoi de la vraie requête HTTP POST à ton API
+            const response = await fetch('http://localhost:8080/atoymg/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // On précise qu'on envoie du JSON
+                },
+                body: JSON.stringify({
+                    username: username,       // La clé doit correspondre à ce que ton API attend (ex: username ou username)
+                    password: password  // La clé doit correspondre à ce que ton API attend
+                }),
+            });
 
-        // C'est ici qu'on ajoutera plus tard l'appel API (Axios ou Fetch)
+            // 2. On extrait les données JSON renvoyées par ton serveur
+            const data = await response.json();
+
+            // 3. On vérifie si le serveur a renvoyé un statut d'erreur (ex: 401, 400, 500)
+            if (!response.ok) {
+                // Si ton API renvoie un message d'erreur spécifique (ex: { message: "..." })
+                throw new Error(data.message || 'Une erreur est survenue lors de la connexion.');
+            }
+
+            // 4. Si tout est OK (statut 200-299)
+            // setSuccessMessage('Connexion réussie !');
+            console.log('Données reçues de ton API :', data);
+
+            // C'est ici qu'on récupérera ton Token (ex: data.token) pour le stocker
+
+        } catch (error) {
+            console.log('Données reçues de ton API :', error);
+        } 
     };
 
     // 3. Structure de la page (JSX)
