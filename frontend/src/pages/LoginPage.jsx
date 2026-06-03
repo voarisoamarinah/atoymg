@@ -17,8 +17,8 @@ function LoginPage() {
                     'Content-Type': 'application/json', // On précise qu'on envoie du JSON
                 },
                 body: JSON.stringify({
-                    username: username,       // La clé doit correspondre à ce que ton API attend (ex: username ou username)
-                    password: password  // La clé doit correspondre à ce que ton API attend
+                    username: username,
+                    password: password
                 }),
             });
 
